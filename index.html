@@ -485,8 +485,22 @@ var height = c.height;
 	}
 
 
+	var fixed = false;
+
+
 	function loop(){
-		window.requestAnimationFrame(loop);
+		
+		try
+ 			 {
+				if(!fixed){requestAnimationFrame(loop);}
+			}catch(err)
+  			{
+  			
+			if(!fixed){window.setInterval(loop,20)}
+				fixed = true;
+  		}
+
+
 		spawnEnemy();
 		clear();
 		ch.update();
